@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.lang.reflect.Array;
@@ -18,7 +19,7 @@ import br.com.fiap.natura.naturaapp.bean.Parceiro;
 import br.com.fiap.natura.naturaapp.bean.Produto;
 import br.com.fiap.natura.naturaapp.simulacao.ListaParceiros;
 
-public class DonationActivity extends AppCompatActivity {
+public class DonationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView lvParceiros;
 
@@ -40,6 +41,7 @@ public class DonationActivity extends AppCompatActivity {
 
         parceirosAdapter = new ParceirosAdapter(parceiros, this);
         lvParceiros.setAdapter(parceirosAdapter);
+        lvParceiros.setOnItemClickListener(this);
 
 
     }
@@ -72,4 +74,9 @@ public class DonationActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, SucessfulActivity.class);
+        startActivity(intent);
+    }
 }

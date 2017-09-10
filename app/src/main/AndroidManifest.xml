@@ -36,7 +36,8 @@
         </activity>
         -->
 
-        <activity android:name=".DonationActivity"></activity>
+        <activity android:name=".DonationActivity" />
+        <activity android:name=".SucessfulActivity"></activity>
     </application>
 
 </manifest>

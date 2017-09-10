@@ -1,9 +1,12 @@
 package br.com.fiap.natura.naturaapp.adapter;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -46,6 +49,13 @@ public class ParceirosAdapter extends BaseAdapter {
         Parceiro parceiro = parceiros.get(position);
 
         TextView nome = (TextView) myView.findViewById(R.id.lista_parceiros_nome);
+        ImageView logo = (ImageView) myView.findViewById(R.id.lista_parceiros_icone);
+
+
+        int identifier = activity.getResources().getIdentifier(parceiro.getLogo(),"drawable",activity.getPackageName());
+        Drawable resource = activity.getDrawable(identifier);
+        logo.setImageDrawable(resource);
+
 
         nome.setText(parceiro.getNome());
 

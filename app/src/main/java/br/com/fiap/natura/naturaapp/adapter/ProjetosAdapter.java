@@ -23,12 +23,12 @@ public class ProjetosAdapter extends BaseAdapter {
 
     private final List<Projeto> projetos;
     private final Activity activity;
-    private Context context;
+    //private Context context;
 
-    public ProjetosAdapter(List<Projeto> projetos, Activity activity, Context context) {
+    public ProjetosAdapter(List<Projeto> projetos, Activity activity/*, Context context*/) {
         this.projetos = projetos;
         this.activity = activity;
-        this.context = context;
+        //this.context = context;
     }
 
     @Override
@@ -58,11 +58,18 @@ public class ProjetosAdapter extends BaseAdapter {
 
         Log.i("PackageName",viewGroup.getContext().getPackageName());
 
+        int identifier = activity.getResources().getIdentifier(projeto.getImagem(),"drawable",activity.getPackageName());
+        Log.i("identifier", Integer.toString(identifier));
+        Drawable resource = activity.getDrawable(identifier);
+        imagem.setImageDrawable(resource);
+
+        /*
         //int imagemResource = viewGroup.getContext().getResources().getIdentifier(projeto.getImagem(), null, viewGroup.getContext().getPackageName());
         int imagemResource = viewGroup.getContext().getResources().getIdentifier("br.com.fiap.natura.naturaapp:drawable/projeto_criancas_musica.jpg", null, null);
         Log.i("imagemResource",Integer.toString(imagemResource));
         //Drawable resource = view.getResources().getDrawable(imagemResource);
         Drawable resource = viewGroup.getContext().getDrawable(imagemResource);
+        */
 
         return myView;
     }

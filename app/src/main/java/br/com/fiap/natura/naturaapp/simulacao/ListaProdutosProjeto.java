@@ -40,11 +40,22 @@ public class ListaProdutosProjeto {
     private static void criaProdutosProjeto(){
         produtosProjeto = new ArrayList<ProdutoProjeto>();
 
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        produtos.add(new Produto(0, "Arroz"));
+        produtos.add(new Produto(1, "Feijão"));
+        produtos.add(new Produto(2, "Caderno"));
+        produtos.add(new Produto(3, "Shampoo"));
+        produtos.add(new Produto(4, "Creme de barbear"));
+        produtos.add(new Produto(5, "Maquiagem"));
+        produtos.add(new Produto(6, "Ervilhas"));
+        produtos.add(new Produto(7, "Papel de Origami"));
+
         // gerando valores ficticios
-        for (int i = 0; i < 15; i++){
+        for (int i = 0; i < 7; i++){
             produtosProjeto.add(new ProdutoProjeto(
                     i,
-                    new Produto(i, "produto " + i),
+                    produtos.get(i),
                     10+i,
                     20+i));
         }

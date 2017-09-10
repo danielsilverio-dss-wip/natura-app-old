@@ -1,6 +1,7 @@
 package br.com.fiap.natura.naturaapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class ProjectActivity extends AppCompatActivity implements AdapterView.On
 
     private TextView txtNomeProjeto;
     private TextView txtDescricaoProjeto;
+    private ImageView imgProjeto;
     private ListView lvProdutos;
 
     private static List<Projeto> projetos;
@@ -74,11 +77,18 @@ public class ProjectActivity extends AppCompatActivity implements AdapterView.On
     private void encontraViews() {
         txtNomeProjeto = (TextView) findViewById(R.id.txtNomeProjeto);
         txtDescricaoProjeto = (TextView) findViewById(R.id.txtDescricaoProjeto);
+        imgProjeto = (ImageView) findViewById(R.id.imgProjeto);
         lvProdutos = (ListView) findViewById(R.id.lvProdutos);
     }
 
     private void setaValoresNasViews() {
         txtNomeProjeto.setText(projeto.getNome());
+
+        int identifier = this.getResources().getIdentifier(projeto.getImagem(),"drawable",this.getPackageName());
+        Drawable resource = this.getDrawable(identifier);
+        imgProjeto.setImageDrawable(resource);
+
+
     }
 
     @Override
@@ -92,8 +102,6 @@ public class ProjectActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void voltar(View v){
-        //Intent i = new Intent(this, ProjectListActivity.class);
-        //startActivity(i);
         finish();
     }
 
